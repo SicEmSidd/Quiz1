@@ -34,7 +34,7 @@ for i in reader:
 # for k, v in addressbook.items():
 #     print(k, v)
 
-outfile.write("name, email, phone \n")
+outfile.write("Name,Email,Phone \n")
 for k, v in addressbook.items():
     # print(k, v)
     writer = k + "," + v['email'] + "," + v['phone'] + "\n"
