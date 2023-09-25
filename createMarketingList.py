@@ -3,6 +3,21 @@
 # and the value is a dictionary where the keys are 'email' and 'phone' and the values
 # are the corresponding email address and phone number of the customer. 
 
+import csv
+infile = open("VendorList.csv", "r")
+reader = csv.reader(infile)
+next(reader)
+addressbook = {}
+
+outfile = open("marketinglistFINAL.csv", "w")
+
+# for i in reader:
+#     print(i)
+for i in reader:
+    full_name = i[1] + " " + i[2]
+    # print(full_name)
+    addressbook[full_name] = {"email": i[4], "phone": i[5]}
+
 # Once the dictionary has been completed print it out. It shoud resemble what is shown
 # below (first 2 and last 2 elements shown only):
 
@@ -16,12 +31,23 @@
 # what is shown in the file - marketinglist.csv.
 # Name your file - marketinglistFINAL.csv
 
+# for k, v in addressbook.items():
+#     print(k, v)
+
+outfile.write("name, email, phone \n")
+for k, v in addressbook.items():
+    # print(k, v)
+    writer = k + "," + v['email'] + "," + v['phone'] + "\n"
+    outfile.write(writer)
+
+outfile.close()
+infile.close()
+
+#I didn't look down here so I didn't use the comments, so anything below this can be ignored
+
 
 # Note: you can use the comments below to guide you through the logic of the code. You are not
 # required to follow it. ALSO NOT ALL STEPS HAVE BEEN COMMENTED. You may have additional steps.
-
-
-import csv
 
 # open the vendorlist file
 
